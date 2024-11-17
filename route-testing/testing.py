@@ -12,12 +12,13 @@ def validate_eta(eta):
 
 
 def get_all_routes():
-   url = 'https://rt.data.gov.hk/v2/transport/citybus/route/CTB/'
+   url = 'https://data.etabus.gov.hk//v1/transport/kmb/route/'
    response = requests.get(url)
    res = response.json()['data']
    route_list = [x['route'] for x in res]
+   res_key = res[0] # .keys()
 
-   return route_list
+   return res_key
 
 
 def get_terminus(route, oi):
